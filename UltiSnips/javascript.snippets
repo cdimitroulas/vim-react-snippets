@@ -1,112 +1,80 @@
 # React & JSX
 snippet rrcc "React Redux Class Component" b
-import React, { Component} from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import styles from './${2:$1}.css';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 class ${1:`!v expand('%:t:r')`} extends Component {
-	static propTypes = {
-		children: PropTypes.node,
-		className: PropTypes.string,
-		dispatch: PropTypes.func.isRequired,
-	};
+  static propTypes = {}
+  
+  static defaultProps = {}
 
-	constructor(props) {
-		super(props);
-	}
+  constructor(props) {
+    super(props)
+  }
 
-	render() {
-		return (
-			<div className={styles.base}>
-				$3
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+	$3
+      </div>
+    )
+  }
 }
 
-function mapStateToProps(state) {
-	return {};
-}
+function mapStateToProps(state) ({
 
-export default connect(mapStateToProps)($1);
+})
+
+export default connect(mapStateToProps)($1)
 endsnippet
 
 snippet rcc "React Class Component" b
-import React, { Component} from 'react';
-import PropTypes from 'prop-types';
-import styles from './${2:$1}.css';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class ${1:`!v expand('%:t:r')`} extends Component {
-	static propTypes = {
-		children: PropTypes.node,
-		className: PropTypes.string,
-	};
+  static propTypes = {}
+  static defaultProps = {}
 
-	constructor(props) {
-		super(props);
-	}
+  constructor() {
+    super()
+  }
 
-	render() {
-		return (
-			<div className={styles.base}>
-				$3
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div className={styles.base}>
+	$3
+      </div>
+    )
+  }
 }
 
-export default $1;
+export default $1
 endsnippet
 
 snippet rfc "React Functional Component" b
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './${2:$1}.css';
 
 function ${1:`!v expand('%:t:r')`}(${3:{...props}}) {
-	return (
-		<div className={styles.base}>
-			$4
-		</div>
-	);
+  return (
+    <div className={styles.base}>
+      $4
+    </div>
+  )
 }
 
-$1.defaultProps = {};
+$1.propTypes = {}
 
-$1.propTypes = {};
+$1.defaultProps = {}
 
-export default $1;
-endsnippet
 
-snippet rsc "React Styled Component" b
-import styled from 'styled-components';
-
-const ${1:`!v expand('%:t:r')`} = styled.${2:div}\`
-	$3
-\`;
-
-export default $1;
-endsnippet
-
-snippet rsci "React Styled Component Interpolation" b
-import styled, { css } from 'styled-components';
-
-const ${1:`!v expand('%:t:r')`} = styled.${2:div}\`${props => css\`
-	${3:${props.$4 && \`
-		$5
-	\`}}
-\`}\`;
-
-export default $1;
+export default $1
 endsnippet
 
 snippet pp "Get Props"
 ${props => props.${1}};
-endsnippet
-
-snippet cn "className"
-className="$1"
 endsnippet
 
 snippet dp "Default Props" b
@@ -115,7 +83,7 @@ ${1:`!v expand('%:t:r')`.}defaultProps = {
 };
 endsnippet
 
-snippet set "Set State"
+snippet setSt "Set State"
 this.setState({
 	${1}: ${2}
 });
